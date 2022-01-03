@@ -28,4 +28,23 @@
     {% for post in list_of_posts_ordered_by_id_desc %}
         <p>{{ post.title }} ({{ post.id}})</p>
     {% endfor %}
+
+    <h1>LIST OF POSTS WITH COMMENT FORM and COMMENTS</h1>
+    {% for post in list_of_posts %}
+        <h2>{{post.title}}</h2>
+        <form action="" method="POST">
+            {{ comment_form.comment_field.label }}
+            {{ comment_form.comment_field }}
+            {{ comment_form.submit }}
+        </form>
+
+
+
+        {% if post.comments %}
+            {% for comment in post.comments %}
+                <p>{{ comment.comment}}</p>
+            {% endfor  %}
+        {% endif  %}
+    {% endfor %}
+
 {% endblock content%}

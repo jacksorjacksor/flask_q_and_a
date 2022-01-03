@@ -1,9 +1,16 @@
 from flask import render_template
 from my_flask_app import app
 from my_flask_app.models import User, Post, Comment
+from my_flask_app.forms import CommentForm
+
+@app.route("/mail")
+def mail():
+    return render_template("mail_to.html")
 
 @app.route("/")
 def home_function():
+    comment_form = CommentForm()
+
     # Get full list:
     list_of_posts = Post.query.all() # Gives us a list of all the Post objects
 
@@ -24,4 +31,5 @@ def home_function():
         list_of_posts_with_id_1=list_of_posts_with_id_1,
         list_of_posts_ordered_by_id_asc=list_of_posts_ordered_by_id_asc,
         list_of_posts_ordered_by_id_desc=list_of_posts_ordered_by_id_desc,
+        comment_form=comment_form,
         )
