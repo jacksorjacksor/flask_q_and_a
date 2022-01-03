@@ -1,12 +1,31 @@
 {% extends "layout.html" %}
 {% block content%}
-    <h1>HI!!!!</h1>
+    <h1>LIST OF POSTS</h1>
     {% for post in list_of_posts %}
         <h2>{{post.title}}</h2>
         {% if post.comments %}
             {% for comment in post.comments %}
-                {{ comment.comment}}
+                <p>{{ comment.comment}}</p>
             {% endfor  %}
         {% endif  %}
+    {% endfor %}
+
+    <h1>ONE POST</h1>
+    <!-- THIS IS NOT A LIST!!!! -->
+    <p>{{ one_post.title }}</p>
+
+    <h1>LIST OF POSTS WITH ID 1</h1>
+    {% for post in list_of_posts_with_id_1 %}
+        <p>{{ post.title }}</p>
+    {% endfor %}
+
+    <h1>LIST OF POSTS ORDERED BY ID ASC</h1>
+    {% for post in list_of_posts_ordered_by_id_asc %}
+        <p>{{ post.title }} ({{ post.id}})</p>
+    {% endfor %}
+
+    <h1>LIST OF POSTS ORDERED BY ID DESC</h1>
+    {% for post in list_of_posts_ordered_by_id_desc %}
+        <p>{{ post.title }} ({{ post.id}})</p>
     {% endfor %}
 {% endblock content%}
